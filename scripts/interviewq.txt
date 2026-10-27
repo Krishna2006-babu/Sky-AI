@@ -1,0 +1,6 @@
+🧠 Interview Prep: The "How" (The Magic Trick)
+If an interviewer asks: "Krishna, how does your AI detect acne?"
+You don't say: "I used a library."
+You say:
+
+"I implemented HSV Color Thresholding. I converted the image from BGR to HSV color space because standard RGB is too sensitive to lighting changes. I then created a Binary Mask that isolates pixels with a Hue value between 0-10 (Red), allowing me to calculate the percentage of inflamed skin."

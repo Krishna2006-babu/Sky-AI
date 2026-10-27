@@ -1,0 +1,19 @@
+
+        ========================================
+        SKY-AI SKIN ANALYSIS REPORT
+        ========================================
+        Author: Krishna Sharma, NIT Silchar
+        Date: 2026-02-13 17:38:02
+        
+        DIAGNOSTICS:
+        - Oiliness: 43.2%
+        - Texture: 30.3
+        
+        AI RECOMMENDATIONS:
+        ISSUES:
+🧩 High Texture
+
+SUGGESTED:
+Retinol, Glycolic Acid
+        ========================================
+        

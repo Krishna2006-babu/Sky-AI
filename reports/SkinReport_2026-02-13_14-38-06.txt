@@ -1,0 +1,18 @@
+
+        ========================================
+        SKY-AI SKIN ANALYSIS REPORT
+        ========================================
+        Author: Krishna Sharma, NIT Silchar
+        Date: 2026-02-13 14:38:06
+        
+        DIAGNOSTICS:
+        - Redness: 3
+        - Oiliness: 18.2%
+        - Texture: 116
+        
+        AI RECOMMENDATIONS:
+        Detected: ['💧 High Sebum (Oily)']
+
+Suggested: ['Clay Mask', 'Salicylic Acid (BHA)']
+        ========================================
+        

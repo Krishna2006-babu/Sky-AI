@@ -1,0 +1,28 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database & Instance folders
+instance/
+*.db
+sky_ai.db
+
+# Output Snapshots & Temporary Data
+extracted_output/snapshots/*
+!extracted_output/snapshots/.gitkeep
+runs/
+
+# Large Model Weights (if you prefer hosting them separately or via Git LFS)
+# *.pt
+# *.h5
+
+# OS / Editor metadata
+.vscode/
+.idea/
+.DS_Store

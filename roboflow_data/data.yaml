@@ -1,0 +1,11 @@
+# The master path to your dataset folder
+path: ./roboflow_data
+
+# Where the images live inside that master folder
+train: train/images
+val: valid/images
+test: test/images
+
+# Your 6 diagnostic classes
+nc: 6
+names: ['blackheads', 'dark spot', 'nodules', 'papules', 'pustules', 'whiteheads']

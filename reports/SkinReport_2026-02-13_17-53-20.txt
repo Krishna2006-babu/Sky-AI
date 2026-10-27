@@ -1,0 +1,19 @@
+
+        ========================================
+        SKY-AI SKIN ANALYSIS REPORT
+        ========================================
+        Author: Krishna Sharma, NIT Silchar
+        Date: 2026-02-13 17:53:20
+        
+        DIAGNOSTICS:
+        - Oiliness: 55.6%
+        - Texture: 34.9
+        
+        AI RECOMMENDATIONS:
+        ISSUES:
+💧 High Sebum (Oily), 🧩 High Texture, 🔴 Active Inflammation (Acne)
+
+SUGGESTED:
+Glycolic Acid, Niacinamide, Retinol, Salicylic Acid (BHA), Benzoyl Peroxide, Tea Tree Oil, Centella
+        ========================================
+        

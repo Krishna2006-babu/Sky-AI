@@ -1,0 +1,15 @@
+Skin_Type,Concern,Severity,Ingredient,Action,Product_Type
+Oily,Acne,High,Benzoyl Peroxide,Use as spot treatment only on red areas.,Treatment Gel
+Oily,Acne,Medium,Salicylic Acid (BHA),Wash face 2x daily. Do not scrub.,Cleanser
+Oily,Acne,Low,Niacinamide,Apply serum after washing to control sebum.,Serum
+Oily,Oiliness,High,Clay Mask,Use once a week to absorb excess oil.,Mask
+Oily,Oiliness,Medium,Green Tea Extract,Use a light gel moisturizer.,Moisturizer
+Dry,Texture,High,Glycolic Acid (AHA),Exfoliate 2x a week at night.,Toner
+Dry,Texture,Low,Lactic Acid,Gentle exfoliation for sensitive skin.,Serum
+Dry,Redness,High,Centella Asiatica,Use a calming sheet mask.,Mask
+Dry,Redness,Medium,Ceramides,Repair skin barrier. Use thick cream.,Moisturizer
+Combination,Acne,Medium,Tea Tree Oil,Apply locally to spots.,Oil
+Combination,Texture,Medium,Retinol,Apply pea-sized amount at night. Wear SPF.,Serum
+Normal,Dullness,Low,Vitamin C,Apply in morning for glow.,Serum
+Sensitive,Redness,High,Azelaic Acid,Reduces inflammation without irritation.,Cream
+Sensitive,Dryness,High,Hyaluronic Acid,Apply on damp skin for hydration.,Serum

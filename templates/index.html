@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky-AI Clinical Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 { color: #58a6ff; font-weight: 300; letter-spacing: 2px;}
+        
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding: 10px;
+            background-color: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+        }
+
+        /* The Live Scanner Pulsing Dot */
+        .status-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 5px 12px;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ff4757;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+        }
+
+        video, img { border-radius: 8px; }
+
+        /* The Snapshot Button */
+        .controls { margin-top: 15px; }
+        
+        .btn-capture {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .btn-capture:hover { background-color: #2ea043; }
+        
+        #message { margin-top: 15px; color: #58a6ff; height: 20px; }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: #2a2a2a; border-bottom: 2px solid #00ff96;">
+        <h1 style="margin: 0; color: white;">Welcome to Sky-AI, <span style="color: #00ff96;">{{ name }}</span>!</h1>
+        <a href="/logout" style="background-color: #ff4c4c; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; font-weight: bold;">Log Out</a>
+    </div>
+    
+    <div class="dashboard">
+        <h1>Sky-AI // Clinical Scanner</h1>
+        
+        <div class="video-container">
+            <div class="status-badge">
+                <div class="dot"></div> LIVE AI ANALYSIS
+            </div>
+            <img src="{{ url_for('video_feed') }}" width="640" height="480">
+        </div>
+
+        <div class="controls">
+            <button class="btn-capture" onclick="takeSnapshot()">📸 Capture Full Frame Snapshot</button>
+            <p id="message"></p>
+        </div>
+
+        <!-- NEW: Skin History Panel -->
+        <div style="background: #161b22; border: 1px solid #30363d; color: white; padding: 20px; margin-top: 10px; border-radius: 10px; width: 100%; max-width: 640px; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+            <h3 style="color: #58a6ff; margin-top: 0; border-bottom: 1px solid #30363d; padding-bottom: 10px;">📊 Your Skin History</h3>
+            <ul style="list-style-type: none; padding: 0; margin: 0;">
+                {% for scan in scans %}
+                    <li style="padding: 12px 0; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: #c9d1d9;">📅 {{ scan.timestamp.strftime('%b %d, %Y - %H:%M') }}</span>
+                        <span style="background: rgba(255, 71, 87, 0.2); color: #ff4757; padding: 4px 10px; border-radius: 15px; font-weight: bold;">
+                            Blemishes: {{ scan.acne_count }}
+                        </span>
+                    </li>
+                {% else %}
+                    <p style="color: #888; text-align: center; font-style: italic;">No scans yet. Take your first snapshot to start tracking!</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // This function talks to our Python backend to save the image!
+        function takeSnapshot() {
+            const msg = document.getElementById('message');
+            msg.innerText = "Capturing...";
+            
+            fetch('/take_snapshot', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === "success") {
+                    msg.style.color = "#2ea043"; // Green text for success
+                    msg.innerText = data.message;
+                    
+                    // Refresh the page after 1.5 seconds so the new scan appears in the history list!
+                    setTimeout(() => { window.location.reload(); }, 1500);
+                } else {
+                    msg.style.color = "#ff4757"; // Red text for error
+                    msg.innerText = data.message;
+                }
+            })
+            .catch(error => {
+                msg.innerText = "Error connecting to server.";
+            });
+        }
+    </script>
+</body>
+</html>
